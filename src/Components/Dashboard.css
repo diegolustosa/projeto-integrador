@@ -1,0 +1,39 @@
+.dashboard {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  h2 {
+    color: #333;
+  }
+  
+  .info {
+    margin-bottom: 20px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .status {
+    margin-top: 20px;
+  }
+  
+  .status-indicator {
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  
+  .status-indicator.em-progresso {
+    background-color: #4caf50;
+  }
+  
+  .status-indicator.parada {
+    background-color: #f44336;
+  }
+  
+  .status-indicator.manutencao {
+    background-color: #ff9800;
+  }
