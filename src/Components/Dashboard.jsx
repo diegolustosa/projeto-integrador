@@ -18,7 +18,7 @@ const Dashboard = () => {
         data_registro: new Date().toISOString(),
       };
 
-      const response = await fetch('https://projetointegrador2025.com/api/consultar-caixas', {  // Ajuste aqui
+      const response = await fetch('projeto-integrador-seven-eta.vercel.app/api/consultar-caixas', {  
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://projetointegrador2025.com/api/consultar-caixas');  // Ajuste aqui
+        const response = await fetch('https://projeto-integrador-seven-eta.vercel.app/api/consultar-caixas');  // Ajuste aqui
         const data = await response.json();
         setTempoCarregamento(data.tempo_carregamento);
         setCaixasDia(data.caixasNoDia);

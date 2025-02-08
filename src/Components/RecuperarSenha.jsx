@@ -9,9 +9,9 @@ const RecuperarSenha = () => {
 
   const handleRecuperarSenha = async (e) => {
     e.preventDefault();
-    setMensagem(''); // Limpar mensagem anterior
+    setMensagem(''); 
 
-    // Verificar se o e-mail tem o formato válido
+ 
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     if (!emailRegex.test(email)) {
       setMensagem('Por favor, insira um e-mail válido.');
@@ -19,13 +19,12 @@ const RecuperarSenha = () => {
     }
 
     try {
-      const { error } = await supabase.auth.resetPasswordForEmail(email);  // Alteração aqui
-
+      const { error } = await supabase.auth.resetPasswordForEmail(email);  
       if (error) {
         setMensagem(`Erro: ${error.message}`);  
       } else {
         setMensagem('Instruções para recuperação de senha enviadas ao seu e-mail.');
-        navigate('/');  // Redireciona para a página de login
+        navigate('/');  
       }
     } catch (error) {
       console.error('Erro ao recuperar a senha:', error);

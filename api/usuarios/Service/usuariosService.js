@@ -195,7 +195,7 @@ export async function resetPassword(email) {
   });
 
   const resetToken = jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: '1h' });
-  const resetLink = `https://projetointegrador2025.com/reset-password?token=${resetToken}`;
+  const resetLink = `https://projeto-integrador-seven-eta.vercel.app/reset-password?token=${resetToken}`;
 
   const mailOptions = {
     from: process.env.EMAIL_USER,

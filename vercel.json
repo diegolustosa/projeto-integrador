@@ -5,22 +5,22 @@
       "src": "projeto-integrador/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist"  
+        "distDir": "dist"
       }
     },
     {
-      "src": "projeto-integrador/api/**/*.js",
+      "src": "projeto-integrador/api/usuarios/index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
+      "src": "/api/usuarios/(.*)",
+      "dest": "/api/usuarios/index.js"
     },
     {
       "src": "/(.*)",
-      "dest": "/dist/$1"  
+      "dest": "/dist/$1"
     }
   ]
 }

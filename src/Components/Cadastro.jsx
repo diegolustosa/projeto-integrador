@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { supabase } from '../utils/supabaseClient'; // Importando o cliente do Supabase
+import { supabase } from '../utils/supabaseClient'; 
 
 const Cadastro = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [mensagem, setMensagem] = useState(''); // Para exibir mensagens de erro ou sucesso
+  const [mensagem, setMensagem] = useState(''); 
   const navigate = useNavigate();
 
   const handleCadastro = async (e) => {
     e.preventDefault();
     console.log("enviando");
 
-    // Verifica se as senhas coincidem
+    
     if (password !== confirmPassword) {
       alert('As senhas não coincidem!');
       return;
     }
 
     try {
-      // 1. Cadastrar o usuário com o email e senha usando o Supabase Auth
+      
       const { user, error: authError } = await supabase.auth.signUp({
         email,
         password,
@@ -32,11 +32,11 @@ const Cadastro = () => {
         return;
       }
 
-      // 2. Após o usuário ser registrado, armazenamos informações adicionais (como o nome) na tabela 'usuarios'
+      
       const { data, error: insertError } = await supabase
         .from('usuarios')
         .insert([
-          { email, usuario: username, id_usuarios: user.id }, // Criando o usuário na tabela 'usuarios'
+          { email, usuario: username, id_usuarios: user.id },
         ]);
 
       if (insertError) {
@@ -46,7 +46,7 @@ const Cadastro = () => {
 
       setMensagem('Cadastro realizado com sucesso!');
       alert('Cadastro realizado com sucesso!');
-      navigate('/');  // Redireciona para a página de login após o cadastro
+      navigate('/');  
     } catch (error) {
       console.error('Erro ao cadastrar:', error);
       setMensagem('Erro ao tentar se cadastrar.');

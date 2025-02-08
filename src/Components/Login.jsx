@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { supabase } from '../utils/supabaseClient';  // Importando o client do Supabase
+import { supabase } from '../utils/supabaseClient';  
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -11,17 +11,17 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Usando o Supabase para login
+    
     try {
       const { user, error } = await supabase.auth.signInWithPassword({
-        email: username,  // Supomos que "username" é o email
+        email: username,  
         password: password,
       });
 
       if (error) {
         setMensagem(error.message || 'Credenciais inválidas');
       } else {
-        navigate('/dashboard');  // Redireciona para o dashboard após o login
+        navigate('/dashboard');  
       }
     } catch (error) {
       console.error('Erro ao fazer login:', error);

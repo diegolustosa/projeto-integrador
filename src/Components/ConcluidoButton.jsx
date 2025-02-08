@@ -1,12 +1,12 @@
-import { supabase } from '../utils/supabaseClient';  // Certifique-se de importar o cliente do Supabase
+import { supabase } from '../utils/supabaseClient';  
 
 const concluirProcesso = async (idCaixa) => {
   try {
-    // Atualiza o status da caixa para "Concluído"
+    
     const { data, error } = await supabase
-      .from('caixas') // Tabela onde as caixas são armazenadas
-      .update({ status: 'Concluído' }) // Atualiza o status da caixa
-      .eq('id_caixas', idCaixa); // Condição para buscar a caixa pelo ID
+      .from('caixas') 
+      .update({ status: 'Concluído' }) 
+      .eq('id_caixas', idCaixa); 
 
     if (error) {
       throw new Error(error.message);
