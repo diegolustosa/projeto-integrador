@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Dashboard.css';
 
 const Dashboard = () => {
-  const [tempoCarregamento, setTempoCarregamento] = useState([]);
+  const [tempoCarregamento, setTempoCarregamento] = useState(null);
   const [caixasDia, setCaixasDia] = useState(0);
   const [caixasSemana, setCaixasSemana] = useState(0);
   const [statusCaixa, setStatusCaixa] = useState('Em Progresso');
@@ -18,7 +18,7 @@ const Dashboard = () => {
         data_registro: new Date().toISOString(),
       };
 
-      const response = await fetch('/api/consultar-caixas', {
+      const response = await fetch('https://projetointegrador2025.com/api/consultar-caixas', {  // Ajuste aqui
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/consultar-caixas');
+        const response = await fetch('https://projetointegrador2025.com/api/consultar-caixas');  // Ajuste aqui
         const data = await response.json();
         setTempoCarregamento(data.tempo_carregamento);
         setCaixasDia(data.caixasNoDia);
@@ -65,7 +65,7 @@ const Dashboard = () => {
                 <div className="info mb-3">
                   <h4>Tempo de Carregamento da Caixa</h4>
                   <ul className="list-unstyled">
-                    {tempoCarregamento ? (
+                    {tempoCarregamento && !isNaN(tempoCarregamento) ? (
                       <li>Tempo total: {tempoCarregamento} minutos</li>
                     ) : (
                       <li>Sem dados de tempo de carregamento.</li>

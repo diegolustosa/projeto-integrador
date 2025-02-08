@@ -1,40 +1,27 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import supabase from '../utils/supabaseClient';
+import { useNavigate, Link } from 'react-router-dom';
+import { supabase } from '../utils/supabaseClient';  // Importando o client do Supabase
+
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [mensagem, setMensagem] = useState(''); 
+  const [mensagem, setMensagem] = useState('');
   const navigate = useNavigate();
-
-  
-  const API_URL = '/api/usuarios/login'; 
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    
-    const dados = { usuario: username, senha: password };
-    console.log(dados);
-
+    // Usando o Supabase para login
     try {
-     
-      const response = await fetch(API_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(dados),
+      const { user, error } = await supabase.auth.signInWithPassword({
+        email: username,  // Supomos que "username" é o email
+        password: password,
       });
 
-      const result = await response.json();
-
-      if (response.ok) {
-        
-        navigate('/dashboard');
+      if (error) {
+        setMensagem(error.message || 'Credenciais inválidas');
       } else {
-       
-        setMensagem(result.msg || 'Credenciais inválidas');
+        navigate('/dashboard');  // Redireciona para o dashboard após o login
       }
     } catch (error) {
       console.error('Erro ao fazer login:', error);
@@ -48,7 +35,7 @@ const Login = () => {
       {mensagem && <div className="alert alert-info">{mensagem}</div>}
       <form onSubmit={handleLogin}>
         <div className="input-group">
-          <label htmlFor="username">Usuário</label>
+          <label htmlFor="username">Usuário (Email)</label>
           <input
             type="text"
             id="username"
@@ -69,8 +56,8 @@ const Login = () => {
         </div>
         <button type="submit">Entrar</button>
       </form>
-      <p>Não tem uma conta? <a href="/cadastro">Cadastre-se</a></p>
-      <p><a href="/recuperar-senha">Esqueci minha senha</a></p> {/* Link para recuperação de senha */}
+      <p>Não tem uma conta? <Link to="/cadastro">Cadastre-se</Link></p>
+      <p><Link to="/recuperar-senha">Esqueci minha senha</Link></p>
     </div>
   );
 };

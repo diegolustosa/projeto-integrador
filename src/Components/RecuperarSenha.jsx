@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom'; 
 import { supabase } from '../utils/supabaseClient';  
 
 const RecuperarSenha = () => {
@@ -9,16 +9,23 @@ const RecuperarSenha = () => {
 
   const handleRecuperarSenha = async (e) => {
     e.preventDefault();
+    setMensagem(''); // Limpar mensagem anterior
+
+    // Verificar se o e-mail tem o formato válido
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailRegex.test(email)) {
+      setMensagem('Por favor, insira um e-mail válido.');
+      return;
+    }
 
     try {
-      
-      const { error } = await supabase.auth.api.resetPasswordForEmail(email);
+      const { error } = await supabase.auth.resetPasswordForEmail(email);  // Alteração aqui
 
       if (error) {
-        setMensagem(error.message);  
+        setMensagem(`Erro: ${error.message}`);  
       } else {
         setMensagem('Instruções para recuperação de senha enviadas ao seu e-mail.');
-        navigate('/'); 
+        navigate('/');  // Redireciona para a página de login
       }
     } catch (error) {
       console.error('Erro ao recuperar a senha:', error);
@@ -29,7 +36,7 @@ const RecuperarSenha = () => {
   return (
     <div className="auth-container">
       <h2>Recuperação de Senha</h2>
-      {mensagem && <div className="alert alert-info">{mensagem}</div>}
+      {mensagem && <div className={`alert ${mensagem.includes('Erro') ? 'alert-error' : 'alert-info'}`}>{mensagem}</div>}
       <form onSubmit={handleRecuperarSenha}>
         <div className="input-group">
           <label htmlFor="email">E-mail</label>
@@ -43,7 +50,7 @@ const RecuperarSenha = () => {
         </div>
         <button type="submit">Enviar instruções</button>
       </form>
-      <p><a href="/">Voltar para Login</a></p>
+      <p><Link to="/">Voltar para Login</Link></p> 
     </div>
   );
 };

@@ -1,25 +1,33 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Deletar = ({ id }) => {
+  const navigate = useNavigate();
+
   // Função para deletar o usuário
   const deletarUsuario = async () => {
+    const confirmacao = window.confirm('Tem certeza que deseja excluir este usuário? Esta ação não pode ser desfeita.');
+
+    if (!confirmacao) {
+      return; // Se o usuário cancelar, nada acontece
+    }
+
     try {
-      // Chama a API para deletar o usuário
-      const response = await fetch(`/api/deletar-usuario?id=${id}`, {
+      // Chama a API para deletar o usuário, com o id na URL
+      const response = await fetch(`/deletar/${id}`, {  // Usando URL com id dinâmico
         method: 'DELETE',  // A requisição será do tipo DELETE
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        alert(data.message);  // Exibe a mensagem de sucesso
+        alert(data.message || 'Usuário deletado com sucesso!');
+        // Redireciona o usuário para a página de dashboard ou onde preferir
+        navigate('/dashboard');
       } else {
-        alert(data.error || 'Erro ao deletar o usuário');  // Exibe mensagem de erro
+        alert(data.error || 'Erro ao deletar o usuário');
       }
 
-      // Aqui você pode redirecionar o usuário ou executar outra ação após a exclusão
-      // Por exemplo: history.push('/dashboard');
-      
     } catch (error) {
       console.error('Erro ao deletar usuário:', error);
       alert('Erro ao deletar o usuário');
