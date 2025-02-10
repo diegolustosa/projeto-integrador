@@ -6,7 +6,8 @@ const router = express.Router();
 
 router.post('/cadastrar', (usuariosController.cadastrarController));
 router.post('/login', (usuariosController.loginController));
-router.post('/esqueci-senha', (usuariosController.resetPasswordController));
+router.get('/confirmar/:token', (usuariosController.confirmarEmailController));
+router.post('/recuperar-senha', (usuariosController.resetPasswordController));
 router.post('/consultar-caixas', (caixasController.caixasController));
 router.get('/', (usuariosController.consultarController));
 router.put('/:id([0-9]+)', (usuariosController.atualizarController));

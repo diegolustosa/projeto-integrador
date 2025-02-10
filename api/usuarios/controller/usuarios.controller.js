@@ -10,85 +10,94 @@ dotenv.config();
 module.exports = ({
   cadastrarController: async (req, res) => {
     const { usuario, email, senha } = req.body;
-
+  
     try {
       // Verificando se os dados necessários foram fornecidos
       if (!usuario || !email || !senha) {
         throw new Error("Usuário, e-mail e senha são obrigatórios");
       }
-
+  
       // Verificando se o usuário já existe no banco
       const { data: userExists, error } = await supabase
         .from('usuarios')
         .select('*')
         .eq('email', email)
         .single();
-
+  
       if (userExists) {
         throw new Error("Este e-mail já está cadastrado");
       }
-
+  
       // Criptografando a senha
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(senha, salt);
-
+  
       // Inserindo o novo usuário no banco de dados
       const { data, insertError } = await supabase
         .from('usuarios')
         .insert([{ usuario, email, senha: hashedPassword, eh_verificado: false }]);
-
+  
       if (insertError) {
+        console.log(insertError)
         throw new Error(`Erro ao cadastrar usuário: ${insertError.message}`);
       }
-
+  
+      // Função de envio do e-mail de confirmação (fora do escopo do try do controller)
+      const sendConfirmationEmail = async (email) => {
+        const transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS,
+          },
+        });
+  
+        const linkDeConfirmacao = `https://projeto-integrador-1-i8dx.onrender.com/api/usuarios/confirmar/${jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: '1h' })}`;
+  
+        const mailOptions = {
+          from: process.env.EMAIL_USER,
+          to: email,
+          subject: 'Confirmação de Cadastro',
+          text: `Por favor, clique no link para confirmar seu cadastro: ${linkDeConfirmacao}`,
+        };
+  
+        try {
+          await transporter.sendMail(mailOptions);
+          console.log('E-mail de confirmação enviado');
+        } catch (error) {
+          console.error("Erro ao enviar e-mail de confirmação:", error);
+          throw new Error('Erro ao enviar e-mail de confirmação');
+        }
+      };
+  
       // Enviando e-mail de confirmação para o usuário
       await sendConfirmationEmail(email);
-
-      // Retornando uma resposta de sucesso
-      res.status(201).send({ msg: 'Usuário cadastrado com sucesso. Verifique seu e-mail para ativação.' });
+  
+      // Retornando sucesso
+      return res.status(201).send({ msg: 'Usuário cadastrado com sucesso. Verifique seu e-mail para ativação.' });
+      
     } catch (err) {
       // Tratando erros
-      res.status(500).send({ msg: err.message });
+      console.error(err.message);
+      return res.status(500).send({ msg: err.message });
     }
   },
 
   confirmarEmailController: async (req, res) => {
-    const { token } = req.params;
-
+    const { token } = req.params; // Pega o token da URL (via req.params)
+  
     try {
+      // Chama o serviço para confirmar o e-mail e atualizar o banco
       await confirmarEmailService(token);
+  
+      // Retorna resposta de sucesso
       return res.status(200).json({ msg: 'E-mail confirmado com sucesso! Sua conta foi ativada.' });
     } catch (err) {
+      // Retorna erro caso algo dê errado
       return res.status(400).json({ msg: err.message });
     }
   },
 
-  sendConfirmationEmail: async (email) => {
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
-    const linkDeConfirmacao = `https://projetointegrador2025.com/confirmar/${jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: '1h' })}`;
-
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: email,
-      subject: 'Confirmação de Cadastro',
-      text: `Por favor, clique no link para confirmar seu cadastro: ${linkDeConfirmacao}`,
-    };
-
-    try {
-      await transporter.sendMail(mailOptions);
-      console.log('E-mail de confirmação enviado');
-    } catch (error) {
-      console.error("Erro ao enviar e-mail de confirmação:", error);
-      throw new Error('Erro ao enviar e-mail de confirmação');
-    }
-  },
 
   loginController: (req, res) => {
     if (req.method === 'POST') {

@@ -34,7 +34,7 @@ parser.on('data', (data) => {
   const dadosArduino = parseLoRaData(data);
 
   if (dadosArduino) {
-    sendDataToAPI(dadosArduino);  // Envia os dados mapeados
+    sendDataToAPI(dadosArduino);  
   }
 });
 
@@ -43,7 +43,7 @@ function parseLoRaData(data) {
 
   if (!status || isNaN(tempo_carregamento) || isNaN(id_caixa)) {
     console.error('Dados inválidos:', data);
-    return null;  // Retorna null se os dados não forem válidos
+    return null;  
   }
 
   return {
