@@ -1,11 +1,9 @@
-import { confirmarEmailController } from '../controller/usuariosController';  // Importa a função do controller
+const confirmarEmailController = require("../controller/usuariosController"); 
 
-export default async function handler(req, res) {
-  const { token } = req.query;  // Pega o token da URL
-
+module.exports = async function handler(req, res) {
   if (req.method === 'GET') {
-    // Chama o controller que vai processar a confirmação
-    return confirmarEmailController(req, res, token);
+    
+    return confirmarEmailController(req, res);  
   }
 
   // Se o método não for GET, retorna erro

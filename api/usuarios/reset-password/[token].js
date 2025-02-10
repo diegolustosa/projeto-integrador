@@ -1,6 +1,6 @@
-import { resetPasswordController } from '../controller/usuariosController';  
+const resetPasswordController = require("../controller/usuariosController");  
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   const { token } = req.query;
 
   if (req.method === 'POST') {

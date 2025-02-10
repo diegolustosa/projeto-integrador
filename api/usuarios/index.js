@@ -1,40 +1,22 @@
-import { cadastrarController } from './controller/usuariosController';
-import { loginController } from './controller/usuariosController';
-import { atualizarController } from './controller/usuariosController';
-import { consultarController, resetPasswordController} from './controller/usuarios.controller';
-import { deletarController} from './controller/usuarios.controller';
-import { resetPasswordController } from './controller/usuarios.controller';
+const express = require("express");
+const usuariosRoute = require("./routes/usuarios.router.js");
+const cors = require('cors');
 
-import { caixasController } from './controller/caixas.controller';
 
-export default async function handler(req, res) {
-  if (req.method === 'POST' && req.url === 'api/usuarios/cadastrar') {
-    return cadastrarController(req, res); 
-  }
-  
-  if (req.method === 'POST' && req.url === 'api/usuarios/login') {
-    return loginController(req, res); 
-  }
+const app = express();
+app.use(cors());
 
-  if (req.method === 'POST' && req.url === 'api/usuarios/esqueci-senha') {
-    return resetPasswordController(req, res); 
-  }
+app.use(express.json());
 
-  if (req.method === 'PUT' && req.url === 'api/usuarios/atualizar/:id([0-9]+') {
-    return atualizarController(req, res); 
-  }
 
-  if(req.method === 'GET' && req.url === 'api/usuarios/consultar') {
-    return consultarController(req,res);
-  }
+app.use('/api/usuarios', usuariosRoute);
 
-  if(req.method === 'DELETE' && req.url === 'api/usuarios/deletar/:id([0-9]+') {
-    return deletarController(req,res);
-  }
 
-  if(req.method === 'POST' && req.url === 'api/usuarios/consultar-caixas') {
-    return caixasController(req,res);
-  }
+app.use((req, res) => {
+  res.status(404).json({ msg: 'Rota não encontrada' });
+});
 
-  return res.status(405).json({ msg: 'Método não permitido' }); 
-}
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});

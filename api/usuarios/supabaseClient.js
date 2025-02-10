@@ -1,15 +1,19 @@
-import dotenv from 'dotenv';
-import { createClient } from '@supabase/supabase-js';
+const dotenv = require("dotenv");
+const {createClient} = require("@supabase/supabase-js");
 
 dotenv.config();  
 
-const SUPABASE_URL = process.env.SUPABASE_URL;
-const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
+const supaBaseUrl = process.env.SUPABASE_URL || '';
+const supabaseKey = process.env.SUPABASE_KEY || '';
 
-if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
+if (!supaBaseUrl || !supabaseKey) {
   throw new Error('SUPABASE_URL ou SUPABASE_SERVICE_KEY não estão definidos no .env');
 }
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);
+const supabase = createClient(supaBaseUrl, supabaseKey, {
+  auth: {
+    persistSession: false
+  }
+});
 
-export default supabase;
+module.exports = supabase;

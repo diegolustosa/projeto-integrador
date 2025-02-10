@@ -1,5 +1,5 @@
 const express = require('express');
-const fetch = require('node-fetch');  // Usando node-fetch
+const fetch = require('node-fetch');  
 const SerialPort = require('serialport');  
 const Readline = require('@serialport/parser-readline');  
 const app = express();
