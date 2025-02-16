@@ -3,10 +3,15 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
+  background-image: url('./assets/proj.jpg');
+  background-position: center;
 }
 
 .auth-container {
+  height: 100%;
   width: 100%;
+  text-align: center;
+  color: black;
   max-width: 400px;
   margin: 50px auto;
   padding: 20px;
@@ -15,21 +20,35 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.logo {
+  width: 150px; /* Ajuste o tamanho da logo */
+  height: 150px;
+  object-fit: contain;
+  margin-top: 50px;  /* Aumenta o valor para puxar mais para baixo */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;  /* Espaço abaixo da logo */
+}
+
+
 h2 {
   text-align: center;
+  border-radius: 10px;
   margin-bottom: 20px;
 }
 
 .input-group {
+  color: black;
   margin-bottom: 15px;
+  border-radius: 80%;
 }
 
 input {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid #0d0b0b;
+  border-radius: 40px;
 }
 
 button {

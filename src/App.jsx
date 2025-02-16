@@ -4,7 +4,7 @@ import Cadastro from './Components/Cadastrar';
 import RecuperarSenha from './Components/RecuperarSenha';
 import Deletar from './Components/Deletar';
 import Dashboard from './Components/Dashboard'; 
-
+import './App.css';
 function App() {
   return (
     <Router>

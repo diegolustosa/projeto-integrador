@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { supabase } from '../utils/supabaseClient';  
+import { supabase } from '../utils/supabaseClient';
+import logo from '../assets/logo.png';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -31,6 +32,7 @@ const Login = () => {
 
   return (
     <div className="auth-container">
+      <img src={logo} alt="logo" className='logo' />
       <h2>Login</h2>
       {mensagem && <div className="alert alert-info">{mensagem}</div>}
       <form onSubmit={handleLogin}>

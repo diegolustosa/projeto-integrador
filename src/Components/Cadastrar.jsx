@@ -48,7 +48,7 @@ const Cadastro = () => {
       alert('Cadastro realizado com sucesso!');
       navigate('/');  
     } catch (error) {
-      console.error('Erro ao cadastrar:', error);
+      console.error('Erro ao cadastrar:', error); // Aqui, ta caindo aqui
       setMensagem('Erro ao tentar se cadastrar.');
     }
   };
@@ -97,6 +97,10 @@ const Cadastro = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
+          <h2>Confirm your signup</h2>
+
+            <p>Para confirmar sua conta clique no link:</p>
+            <p><a href="{{ .ConfirmationURL }}">Confirm your mail</a></p>
         </div>
         <button type="submit">Cadastrar</button>
       </form>

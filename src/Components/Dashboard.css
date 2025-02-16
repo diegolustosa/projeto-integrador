@@ -1,19 +1,33 @@
 .dashboard {
-    padding: 20px;
+    height: 90%;
+    width: 500px;
+    padding: 50px;
     font-family: Arial, sans-serif;
   }
   
   h2 {
     color: #333;
+    width: 500vh;
   }
   
   .info {
-    margin-bottom: 20px;
+    font-size: 200%;
+    margin-bottom: 50px;
+  }
+  
+  .caixasDia {
+    color: black;
+    font-size: 80%;
+  }
+  .caixasSemana {
+    color: black;
+    font-size: 80%;
   }
   
   ul {
-    list-style-type: none;
-    padding: 0;
+    list-style-type: decimal-leading-zero;
+    padding: 40px;
+    font-size: 200%;
   }
   
   .status {
@@ -27,6 +41,7 @@
   }
   
   .status-indicator.em-progresso {
+    right: 500%;
     background-color: #4caf50;
   }
   

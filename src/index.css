@@ -1,3 +1,4 @@
+/* Estilo global */
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
@@ -6,62 +7,83 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100vh; /* Alterado para garantir que ocupe toda a altura da tela */
+  width: 100%;
   text-align: center;
+  overflow: hidden;
 }
 
+/* Estilo para a box de autenticação */
 .auth-container {
   width: 100%;
-  max-width: 400px;
+  max-width: 500px; /* Limita a largura máxima da caixa */
   margin: 0 auto;
-  padding: 20px;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
+  padding: 40px; /* Reduzido para dar mais espaçamento ao conteúdo */
+  background: linear-gradient(to top, rgb(217, 219, 222), rgb(41, 104, 136)); /* Gradiente suave */
+  border-radius: 8px; /* Bordas arredondadas */
+  background-color: #b61f26; /* Cor de fundo */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: background-color 0.5s ease;
+  height: 40%;
 }
 
+/* Título principal */
 .auth-container h2 {
+  align-items: center;
+  justify-content: center;
   margin-bottom: 20px;
-  font-size: 24px;
+  font-size: 32px; /* Tamanho de fonte reduzido para melhor visualização */
+  color: #000000; /* Cor mais suave para o título */
 }
 
+/* Estilo para os grupos de input */
 .input-group {
   margin-bottom: 15px;
 }
 
+/* Estilo para os campos de entrada (input) */
 input {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin-top: 5px;
-  border: 1px solid #ddd;
+  border: 2px solid #000000;
   border-radius: 4px;
+  font-size: 16px; /* Ajuste no tamanho da fonte */
+  color: #333; /* Cor do texto no campo de entrada */
 }
 
+/* Estilo para o botão */
 button {
   width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
+  padding: 15px; /* Aumentado o padding para mais clique */
+  background-color: #fafbfb;
+  color: #000000;
   border: none;
-  border-radius: 4px;
+  border-radius: 4px; /* Alterado para bordas arredondadas mais suaves */
   cursor: pointer;
+  font-size: 18px; /* Tamanho de fonte ajustado */
   transition: background-color 0.3s;
 }
 
+/* Efeito hover no botão */
 button:hover {
-  background-color: #0056b3;
+  background-color: #050505;
 }
 
+/* Estilo para parágrafos */
 p {
-  font-size: 14px;
+  color: black;
+  font-size: 18px; /* Tamanho de fonte ajustado */
 }
 
+/* Estilo para links */
 a {
-  color: #007bff;
+  color: #000000;
   text-decoration: none;
+  font-size: 16px; /* Tamanho de fonte ajustado para o link */
 }
 
+/* Ajuste do link no hover */
 a:hover {
   text-decoration: underline;
 }
@@ -72,7 +94,7 @@ a:hover {
 }
 
 .auth-container.cadastro button {
-  background-color: #28a745; /* Cor de botão diferente */
+  background-color: #28a745; /* Cor do botão diferente */
 }
 
 .auth-container.cadastro button:hover {

@@ -76,8 +76,8 @@ const Dashboard = () => {
                 {/* Informações sobre as caixas */}
                 <div className="info mb-3">
                   <h4>Caixas Carregadas</h4>
-                  <p>Hoje: {caixasDia}</p>
-                  <p>Esta Semana: {caixasSemana}</p>
+                  <p className = "caixasDia">Hoje: {caixasDia}</p>
+                  <p className = "CaixasSemana">Esta Semana: {caixasSemana}</p>
                 </div>
 
                 {/* Status da caixa atual */}
