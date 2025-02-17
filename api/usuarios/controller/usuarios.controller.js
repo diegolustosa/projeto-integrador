@@ -42,7 +42,7 @@ module.exports = ({
         throw new Error(`Erro ao cadastrar usuário: ${insertError.message}`);
       }
   
-      // Função de envio do e-mail de confirmação (fora do escopo do try do controller)
+      // Função de envio do e-mail de confirmação 
       const sendConfirmationEmail = async (email) => {
         const transporter = nodemailer.createTransport({
           service: 'gmail',

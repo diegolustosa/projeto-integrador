@@ -4,7 +4,7 @@ const SerialPort = require('serialport');
 const Readline = require('@serialport/parser-readline');  
 const app = express();
 
-const port = new SerialPort('/dev/ttyUSB0', { baudRate: 9600 });
+const port = new SerialPort('/dev/COM5', { baudRate: 9600 });
 const parser = port.pipe(new Readline({ delimiter: '\n' }));
 
 port.on('open', () => {
