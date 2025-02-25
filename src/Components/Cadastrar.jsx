@@ -36,7 +36,7 @@ const Cadastro = () => {
       const { data, error: insertError } = await supabase
         .from('usuarios')
         .insert([
-          { email, usuario: username, id_usuarios: user.id },
+          { email, usuario: username},
         ]);
 
       if (insertError) {
@@ -49,7 +49,7 @@ const Cadastro = () => {
       navigate('/');  
     } catch (error) {
       console.error('Erro ao cadastrar:', error); // Aqui, ta caindo aqui
-      setMensagem('Erro ao tentar se cadastrar.');
+      setMensagem('Erro ao tentar se cadastrar.'); // ESSE ERRO
     }
   };
 

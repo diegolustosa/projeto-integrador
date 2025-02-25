@@ -1,8 +1,16 @@
+
 .dashboard {
     height: 90%;
-    width: 500px;
-    padding: 50px;
+    width: 500vh;
+    padding: 50vh;
     font-family: Arial, sans-serif;
+  }
+
+  .card.shadow-sm {
+    height: 110%;
+    right: 20%;
+    width: 800px;
+    justify-content: center;
   }
   
   h2 {

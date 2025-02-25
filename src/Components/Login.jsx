@@ -33,7 +33,7 @@ const Login = () => {
   return (
     <div className="auth-container">
       <img src={logo} alt="logo" className='logo' />
-      <h2>Login</h2>
+      <h2> lvl Box</h2>
       {mensagem && <div className="alert alert-info">{mensagem}</div>}
       <form onSubmit={handleLogin}>
         <div className="input-group">
