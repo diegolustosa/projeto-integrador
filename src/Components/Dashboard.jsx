@@ -18,7 +18,7 @@ const Dashboard = () => {
         data_registro: new Date().toISOString(),
       };
 
-      const response = await fetch('projeto-integrador-seven-eta.vercel.app/api/consultar-caixas', {  
+      const response = await fetch('projeto-integrador-seven-eta.vercel.app/api/consultar-caixas', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -57,43 +57,44 @@ const Dashboard = () => {
     <div className="container mt-5">
       <div className="row">
         <div className="col-lg-8 offset-lg-2">
-          <div className="card shadow-sm">
-            <div className="card-body">
-              <h2 className="card-title text-center">Bem-vindo, {nomeUsuario}!</h2>
-              <div className="mt-4">
-                {/* Informações sobre o tempo de carregamento */}
-                <div className="info mb-3">
-                  <h4>Tempo de Carregamento da Caixa</h4>
-                  <ul className="list-unstyled">
-                    {tempoCarregamento && !isNaN(tempoCarregamento) ? (
-                      <li>Tempo total: {tempoCarregamento} minutos</li>
-                    ) : (
-                      <li>Sem dados de tempo de carregamento.</li>
-                    )}
-                  </ul>
-                </div>
+          <div className="overlay">
+            <div class="card-image-wrapper">
+            <div className="mt-4">
+                  {/* Informações sobre o tempo de carregamento */}
+                  <div className="info mb-3">
+                    <h4>Tempo de Carregamento da Caixa</h4>
+                    <ul className="list-unstyled">
+                      {tempoCarregamento && !isNaN(tempoCarregamento) ? (
+                        <li>Tempo total: {tempoCarregamento} minutos</li>
+                      ) : (
+                        <li>Aguardando dados para tempo de carregamento.</li>
+                      )}
+                    </ul>
+                  </div>
 
-                {/* Informações sobre as caixas */}
-                <div className="info mb-3">
-                  <h4>Caixas Carregadas</h4>
-                  <p className = "caixasDia">Hoje: {caixasDia}</p>
-                  <p className = "CaixasSemana">Esta Semana: {caixasSemana}</p>
-                </div>
+                  {/* Informações sobre as caixas */}
+                  <div className="info mb-3">
+                    <h4>Caixas Carregadas</h4>
+                    <p>Hoje: {caixasDia}</p>
+                    <p>Esta Semana: {caixasSemana}</p>
+                  </div>
 
-                {/* Status da caixa atual */}
-                <div className="status mb-4">
-                  <h4>Status da Caixa Atual</h4>
-                  <div className={`status-indicator p-2 rounded text-white ${statusCaixa.toLowerCase().replace(' ', '-')}`}>
-                    {statusCaixa}
+                  {/* Status da caixa atual */}
+                  <div className="status mb-4">
+                    <h4>Status da Caixa Atual</h4>
+                    <div className={`status-indicator p-2 rounded text-white ${statusCaixa.toLowerCase().replace(' ', '-')}`}>
+                      {statusCaixa}
+                    </div>
+                  </div>
+
+                  {/* Botão para enviar os dados para a API */}
+                  <div className="d-flex justify-content-center">
+                    <button className="btn btn-primary" onClick={sendDataToAPI}>
+                      Enviar Dados para a API
+                    </button>
                   </div>
                 </div>
-
-                {/* Botão para enviar os dados para a API */}
-                <div className="d-flex justify-content-center">
-                  <button className="btn btn-primary" onClick={sendDataToAPI}>
-                    Enviar Dados para a API
-                  </button>
-                </div>
+              <div className='card-image'>
               </div>
             </div>
           </div>

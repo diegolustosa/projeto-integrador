@@ -1,51 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 
-.dashboard {
-    height: 90%;
-    width: 500vh;
-    padding: 50vh;
-    font-family: Arial, sans-serif;
-  }
+.card-image-wrapper {
+  width: 40%; /* Controla a largura da imagem */
+  height: 100vh; /* Altura definida para a imagem */
+  display: flex; /* Flexbox para centralizar */
+  justify-content: center; /* Centraliza a imagem na horizontal */
+  align-items: center; /* Centraliza a imagem na vertical */
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 40px;
+}
+.mt-4 {
+  width: 40%; /* Controla a largura da imagem */
+  height: 95vh; /* Altura definida para a imagem */
+  position: absolute;  /* Posiciona o conteúdo sobre a imagem */
+  top: 50%;            /* Centraliza verticalmente */
+  left: 50%;           /* Centraliza horizontalmente */
+  transform: translate(-50%, -50%); /* Centraliza perfeitamente */
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+  z-index: 2; /* Conteúdo fica acima da imagem e do overlay */
+  background: rgba(0, 0, 0, 0.2); /* Fundo transparente para o conteúdo melhorar a legibilidade */
+  border-radius: 8px; /* Opcional: borda arredondada no fundo */
+  padding: 40px;
+  background-position: top center;
+  border-radius: 40px;
+}
 
-  .card.shadow-sm {
-    height: 110%;
-    right: 20%;
-    width: 800px;
-    justify-content: center;
-  }
+.overlay {
+  height: 92%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 69px;
+}
+
+.container mt-5 {
+  font-family: "Source Code Pro", serif;
+    font-weight: normal;
+    font-style: normal;
+    color: #eaf7ff;
+    font-size: 40%;
+}
+
+.card-image {
+  background-attachment: fixed;
+  display: block;
+  z-index: 0;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  height: 500px; /* Ajuste a altura da imagem */
+  width: 500vh; /* Ajuste a largura da imagem para 100% do card */
+  background-image: url(../assets/pesquisador-usando-uma-tecnologia-futurista-de-tela-de-tablet-digital-transparente_53876-101147.jpg);
+  background-size: cover;
+  background-position: center center; /* Centraliza a imagem */
+  background-repeat: no-repeat;
+  filter: brightness(2.50) contrast(0.60);
+  border-radius: 25px;
+}
   
   h2 {
-    color: #333;
+    color: #eaf7ff;
     width: 500vh;
+  }
+
+  .info mb-3 {
+    font-family: "Source Code Pro", serif;
+    font-weight: normal;
+    font-style: normal;
+    color: #eaf7ff;
+    font-size: 40%;
+
   }
   
   .info {
+    color: #eaf7ff;
     font-size: 200%;
     margin-bottom: 50px;
   }
   
   .caixasDia {
-    color: black;
-    font-size: 80%;
+    font-family: "Source Code Pro", serif;
+    font-weight: normal;
+    font-style: normal;
+    color: #eaf7ff;
+    font-size: 40%;
   }
   .caixasSemana {
-    color: black;
-    font-size: 80%;
+    font-family: "Source Code Pro", serif;
+    font-weight: normal;
+    font-style: normal;
+    color: #eaf7ff;
+    font-size: 40%;
   }
   
   ul {
+    font-family: "Source Code Pro", serif;
+    font-weight: normal;
+    font-style: normal;
     list-style-type: decimal-leading-zero;
     padding: 40px;
-    font-size: 200%;
+    color: #eaf7ff;
+    font-size: 50%;
   }
   
   .status {
+    font-family: "Source Code Pro", serif;
+    font-weight: normal;
+    font-style: normal;
     margin-top: 20px;
+    color: #eaf7ff;
   }
   
   .status-indicator {
+    font-family: "Source Code Pro", serif;
+    font-weight: normal;
+    font-style: normal;
     padding: 10px;
     margin-top: 10px;
     border-radius: 5px;
+  }
+
+  .btn btn-primary {
+    font-family: "Source Code Pro", serif;
+    font-weight: normal;
+    font-style: normal;
   }
   
   .status-indicator.em-progresso {

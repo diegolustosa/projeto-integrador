@@ -8,15 +8,32 @@ const Cadastro = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [mensagem, setMensagem] = useState(''); 
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleCadastro = async (e) => {
     e.preventDefault();
     console.log("enviando");
 
+    const isEmailValid = (email) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
+
+    if(!isEmailValid(email)) {
+      alert('Formato de email inválido');
+      setError('Formato de email inválido');
+      return;
+    }
+
+    function testSenha(password, confirmPassword) {  
+    let vet = [password, confirmPassword]
+    return vet;
+    }
+
+    
+
     
     if (password !== confirmPassword) {
       alert('As senhas não coincidem!');
+      setError('As senha não coincidem')
       return;
     }
 
@@ -99,6 +116,7 @@ const Cadastro = () => {
           />
         </div>
         <button type="submit">Cadastrar</button>
+        {error && <span>{error}</span>} {}
       </form>
       <p>Já tem uma conta? <a href="/">Faça login</a></p>
     </div>

@@ -6,6 +6,7 @@ import logo from '../assets/logo.png';
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const [mensagem, setMensagem] = useState('');
   const navigate = useNavigate();
 
@@ -13,31 +14,62 @@ const Login = () => {
     e.preventDefault();
 
     
-    try {
-      const { user, error } = await supabase.auth.signInWithPassword({
-        email: username,  
-        password: password,
-      });
-
-      if (error) {
-        setMensagem(error.message || 'Credenciais inválidas');
-      } else {
-        navigate('/dashboard');  
-      }
-    } catch (error) {
-      console.error('Erro ao fazer login:', error);
-      setMensagem('Erro ao tentar fazer login.');
+    // A variável loginValue vai ser o email ou username, dependendo do que foi fornecido
+    const loginValue = username;  // Se o email estiver presente, ele é usado, caso contrário, o username será usado
+    console.log('Login Value:', loginValue);
+    if (!loginValue || !password) {
+        setError('Por favor, preencha o e-mail ou nome de usuário e a senha.');
+        return;
     }
-  };
+
+    try {
+        let emailToUse = loginValue;
+        console.log('Login Value:', loginValue);
+        // Verifica se o loginValue não é um e-mail e tenta buscar pelo username no banco de dados
+        if (!loginValue.includes('@')) {  // Se o loginValue não é um e-mail (não contém "@")
+            const { data, error } = await supabase
+                .from('usuarios')  // A tabela de usuários onde você armazena os dados
+                .select('email')  // Pegamos o email do usuário
+                .eq('usuario', loginValue)  // Verificamos se o campo 'usuario' é igual ao username fornecido
+                .single();  // Espera um único resultado (um usuário por vez)
+
+            if (error || !data) {
+                setError('Usuário não encontrado.');
+                return;
+            }
+
+            emailToUse = data.email;  // Substituímos o loginValue pelo e-mail encontrado no banco de dados
+        }
+
+        // Fazemos o login com o e-mail
+        const { user, authError } = await supabase.auth.signInWithPassword({
+            email: emailToUse,  // Se for username, já substituímos por e-mail; se for e-mail, ele vai diretamente
+            password,
+        });
+
+        if (authError) {
+            setError(authError.message);
+            return;
+        }
+
+        // Se o login for bem-sucedido, redirecionamos para a dashboard (ou qualquer outra página desejada)
+        setError('');
+        navigate('/dashboard');  // Ou qualquer outra página que você deseja redirecionar após o login
+
+    } catch (error) {
+        setError('Erro ao tentar fazer login.');
+        console.error('Erro ao fazer login:', error);
+    }
+};
 
   return (
     <div className="auth-container">
       <img src={logo} alt="logo" className='logo' />
-      <h2> lvl Box</h2>
+      <h4 className='nomeMarca'> lvl Box</h4>
       {mensagem && <div className="alert alert-info">{mensagem}</div>}
       <form onSubmit={handleLogin}>
         <div className="input-group">
-          <label htmlFor="username">Usuário (Email)</label>
+          <label htmlFor="username">Usuário ou email</label>
           <input
             type="text"
             id="username"

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
@@ -6,6 +8,41 @@ body {
   background-image: url('./assets/proj.jpg');
   background-position: center;
 }
+
+.nomeMarca {
+
+  border-start-start-radius: 5%;
+  border-start-end-radius: 5%;
+  color: rgb(4, 34, 41);
+  border: transparent;
+  font-family: "Source Code Pro", serif;
+  font-size: xx-large;
+  font-weight: normal;
+  font-style: normal;
+  font-optical-sizing: auto;
+  position: relative;
+  overflow: hidden;
+  transition: .700ms;
+  animation: hover-effect 750ms infinite;
+}
+
+.nomeMarca {
+  background-color: cadetblue;
+  box-shadow: 0 0 10px cadetblue, 0 0 15px #04478f, 0 0 30px silver;
+}
+
+@keyframes hover-effect {
+  0% {
+    background-color: #035d95; 
+}
+  50% {
+    background-color: #4591dd;
+  }
+  100% {
+    background-color: #a5c5e0;
+  }
+}
+
 
 .auth-container {
   height: 100%;
@@ -21,13 +58,13 @@ body {
 }
 
 .logo {
-  width: 150px; /* Ajuste o tamanho da logo */
+  width: 150px; 
   height: 150px;
   object-fit: contain;
-  margin-top: 50px;  /* Aumenta o valor para puxar mais para baixo */
+  margin-top: 50px;  
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20px;  /* Espaço abaixo da logo */
+  margin-bottom: 20px;  
 }
 
 
@@ -38,6 +75,7 @@ h2 {
 }
 
 .input-group {
+  font-family: "Source Code Pro", serif;
   color: black;
   margin-bottom: 15px;
   border-radius: 80%;
@@ -52,6 +90,9 @@ input {
 }
 
 button {
+  font-family: "Source Code Pro", serif;
+  font-style: normal;
+  font-optical-sizing: auto;
   width: 100%;
   padding: 10px;
   background-color: #007bff;
@@ -66,6 +107,11 @@ button:hover {
 }
 
 p {
+  font-family: "Source Code Pro", serif;
+  font-size: xx-large;
+  font-weight: normal;
+  font-style: normal;
+  font-optical-sizing: auto;
   text-align: center;
   font-size: 14px;
 }
