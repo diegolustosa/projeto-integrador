@@ -65,7 +65,7 @@ const Login = () => {
   return (
     <div className="auth-container">
       <img src={logo} alt="logo" className='logo' />
-      <h4 className='nomeMarca'> lvl Box</h4>
+      <h4 className='nomeMarca'> Boxlvl</h4>
       {mensagem && <div className="alert alert-info">{mensagem}</div>}
       <form onSubmit={handleLogin}>
         <div className="input-group">
