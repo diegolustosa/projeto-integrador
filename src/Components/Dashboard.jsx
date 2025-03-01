@@ -54,16 +54,13 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div className="container mt-5">
-      <div className="row">
-        <div className="col-lg-8 offset-lg-2">
           <div className="overlay">
             <div class="card-image-wrapper">
             <div className="mt-4">
-                  {/* Informações sobre o tempo de carregamento */}
                   <div className="info mb-3">
-                    <h4>Tempo de Carregamento da Caixa</h4>
-                    <ul className="list-unstyled">
+                    {/* Informações sobre o tempo de carregamento */}
+                    <ul>
+                      <strong><p>TEMPO DE CARREGAMENTO DA CAIXA</p></strong>
                       {tempoCarregamento && !isNaN(tempoCarregamento) ? (
                         <li>Tempo total: {tempoCarregamento} minutos</li>
                       ) : (
@@ -72,24 +69,26 @@ const Dashboard = () => {
                     </ul>
                   </div>
 
-                  {/* Informações sobre as caixas */}
-                  <div className="info mb-3">
-                    <h4>Caixas Carregadas</h4>
+                  
+                  <div className="info mb-4">
+                    {/* Informações sobre as caixas */}
+                    <h5>Caixas Carregadas</h5>
                     <p>Hoje: {caixasDia}</p>
                     <p>Esta Semana: {caixasSemana}</p>
                   </div>
 
-                  {/* Status da caixa atual */}
+                  
                   <div className="status mb-4">
                     <h4>Status da Caixa Atual</h4>
-                    <div className={`status-indicator p-2 rounded text-white ${statusCaixa.toLowerCase().replace(' ', '-')}`}>
+                    <div>
+                      {/* Status da caixa atual */}
                       {statusCaixa}
                     </div>
                   </div>
 
                   {/* Botão para enviar os dados para a API */}
-                  <div className="d-flex justify-content-center">
-                    <button className="btn btn-primary" onClick={sendDataToAPI}>
+                  <div className="buttonApi">
+                    <button onClick={sendDataToAPI}>
                       Enviar Dados para a API
                     </button>
                   </div>
@@ -98,9 +97,6 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
   );
 };
 

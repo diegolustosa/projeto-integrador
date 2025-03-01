@@ -1,12 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 
+@media (max-width: 1440px) {
+
 .card-image-wrapper {
   width: 40%; /* Controla a largura da imagem */
   height: 100vh; /* Altura definida para a imagem */
   display: flex; /* Flexbox para centralizar */
   justify-content: center; /* Centraliza a imagem na horizontal */
   align-items: center; /* Centraliza a imagem na vertical */
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
   overflow: hidden;
   border-radius: 40px;
@@ -147,4 +149,117 @@
   
   .status-indicator.manutencao {
     background-color: #ff9800;
+  }
+}
+@media (max-width: 625px) {
+  .card-image-wrapper {
+    font-size: 2px;
+    width: 65%; /* Controla a largura da imagem */
+    height: 100vh; /* Altura definida para a imagem */
+    display: flex; /* Flexbox para centralizar */
+    justify-content: center; /* Centraliza a imagem na horizontal */
+    align-items: center; /* Centraliza a imagem na vertical */
+    max-width: 625px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 40px;
+  }
+  .mt-4 {
+    font-size: 2px;
+    display: flex;
+    width: 70%; /* Controla a largura da imagem */
+    height: 100vh; /* Altura definida para a imagem */
+    position: relative;  /* Posiciona o conteúdo sobre a imagem */
+    top: 50%;            /* Centraliza verticalmente */
+    left: 50%;           /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Centraliza perfeitamente */
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    z-index: 2; /* Conteúdo fica acima da imagem e do overlay */
+    background: rgba(0, 0, 0, 0.2); /* Fundo transparente para o conteúdo melhorar a legibilidade */
+    border-radius: 8px; /* Opcional: borda arredondada no fundo */
+    padding: 40px;
+    background-position: center;
+    border-radius: 40px;
+  }
+  
+  .overlay {
+    font-size: 2px;
+    height: 92%;
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    overflow: hidden;
+    border-radius: 69px;
+  }
+  
+  .container mt-5 {
+    font-family: "Source Code Pro", serif;
+      font-weight: normal;
+      font-style: normal;
+      color: #eaf7ff;
+      font-size: 5px;
+  }
+  
+  .card-image {
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    height: 425px; /* Ajuste a altura da imagem */
+    width: 850vh; /* Ajuste a largura da imagem para 100% do card */
+    background-image: url(../assets/pesquisador-usando-uma-tecnologia-futurista-de-tela-de-tablet-digital-transparente_53876-101147.jpg);
+    background-size: cover;
+    background-position: center center; /* Centraliza a imagem */
+    background-repeat: no-repeat;
+    filter: brightness(2.50) contrast(0.60);
+    border-radius: 25px;
+    font-size: 14px;
+  }
+  
+    .info.mb-3 {
+      display: flex;
+      flex-direction: row;
+      flex: wrap;
+      width: 30%;
+      height: 500px;
+      font-family: "Source Code Pro", serif;
+      font-weight: normal;
+      font-style: normal;
+      color: #eaf7ff !important;
+      font-size: 15px !important;
+  
+    }
+    .status.mb-4 {
+      font-size: 14px;
+      overflow: hidden;
+      box-sizing: border-box;
+      min-width: 100vh;
+      width: 498px;
+      height: 76.72px;
+      padding: 10px;
+      font-family: "Source Code Pro", serif;
+      font-weight: normal;
+      font-style: normal;
+      margin-top: 20px;
+      color: #eaf7ff;
+    }
+
+    .info.mb-4 {
+      font-size: 2px !important;
+      display: flex;
+      flex-direction: column;
+     
+    }
+    
   }
