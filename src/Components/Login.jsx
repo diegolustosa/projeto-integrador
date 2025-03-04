@@ -88,7 +88,7 @@ const Login = () => {
             required
           />
         </div>
-        <button type="submit">Entrar</button>
+        <button className='buttonAuth' type="submit">Entrar</button>
       </form>
       <p>Não tem uma conta? <Link to="/cadastrar">Cadastre-se</Link></p>
       <p><Link to="/recuperar-senha">Esqueci minha senha</Link></p>

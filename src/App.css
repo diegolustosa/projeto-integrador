@@ -61,10 +61,8 @@ body {
   width: 150px; 
   height: 150px;
   object-fit: contain;
-  margin-top: 50px;  
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px;  
+  margin: 10px;  
+
 }
 
 
@@ -89,7 +87,7 @@ input {
   border-radius: 40px;
 }
 
-button {
+.buttonAuth {
   font-family: "Source Code Pro", serif;
   font-style: normal;
   font-optical-sizing: auto;
@@ -102,7 +100,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.buttonAuth:hover {
   background-color: #0056b3;
 }
 

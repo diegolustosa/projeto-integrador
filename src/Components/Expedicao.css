@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Source+Code+Pro:ital,wght@0,800;1,800&display=swap');
+
+.main {
+  padding: 10vh;
+  display: flex;
+  flex-wrap: wrap;
+  top:0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.expedicao1 {
+  padding: 2vh;
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 auto;
+  overflow:hidden;
+  margin-bottom: 10px;
+}
+
+.expedicao2 {
+  padding: 2vh;
+  display: flex;
+  flex-wrap: wrap;
+  
+  margin-top: 20px;
+}
+
+.container1 {
+  display: block;
+  flex-direction: row;
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  background-color: #595757;
+  min-height: 300px;
+  max-height: 575.33;
+  margin-bottom: 20px;
+}
+
+.container2 {
+  margin-top: 20px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
+input::placeholder {
+  font-family: 'Source Code Pro', monospace;  
+  font-size: 14px;  
+  color: #7397df;  
+}
+
+
+.pallet {
+  border: 1px solid black;
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+  background-color: #cec3c3;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-pallet-form {
+  position: relative;
+  top:5vw;
+  height: 2vh;
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
+
+.pallet.highlighted {
+  border: 2px solid red;
+  background-color: #fffbf0; 
+}
+
+.pesquisaNome {
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  margin: 10px;
+  padding: 5px;
+  font-size: 16px;
+  width: 25vw;
+}
+
+.highlight-btn {
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.remove-btn {
+  position: relative;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: rgb(235, 5, 5);
+  transition: transform 0.2s, color 0.2s;
+}
+
+.remove-btn:hover {
+  overflow: hidden;
+  transform: scale(1.2);
+  color: rgb(250, 1, 1);
+}
+
+.produtos {
+  
+  margin-top: 20px;
+}
+
+.produto {
+  display: flex;
+  position: relative;
+  align-items: baseline;
+  top: -5px;
+  margin-bottom: 10px;
+}
+
+.produto button {
+  
+  margin-right: 5px;
+  padding: 5px 10px;
+  font-size: 12px;
+  background-color: #f10707;
+  border: 1px solid #c4c1c1;
+  cursor: pointer;
+}
+
+.produto button:hover {
+  background-color: #e0e0e0;
+}

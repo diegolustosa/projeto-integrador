@@ -47,7 +47,7 @@ const RecuperarSenha = () => {
             required
           />
         </div>
-        <button type="submit">Enviar instruções</button>
+        <button className='ButtonAuth' type="submit">Enviar instruções</button>
       </form>
       <p><Link to="/">Voltar para Login</Link></p> 
     </div>

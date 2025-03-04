@@ -22,14 +22,6 @@ const Cadastro = () => {
       setError('Formato de email inválido');
       return;
     }
-
-    function testSenha(password, confirmPassword) {  
-    let vet = [password, confirmPassword]
-    return vet;
-    }
-
-    
-
     
     if (password !== confirmPassword) {
       alert('As senhas não coincidem!');
@@ -115,7 +107,7 @@ const Cadastro = () => {
             required
           />
         </div>
-        <button type="submit">Cadastrar</button>
+        <button className='buttonAuth' type="submit">Cadastrar</button>
         {error && <span>{error}</span>} {}
       </form>
       <p>Já tem uma conta? <a href="/">Faça login</a></p>
