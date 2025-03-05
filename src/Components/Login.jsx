@@ -59,6 +59,7 @@ const Login = () => {
     } catch (error) {
         setError('Erro ao tentar fazer login.');
         console.error('Erro ao fazer login:', error);
+        alert("Usuario não encontrado");
     }
 };
 
