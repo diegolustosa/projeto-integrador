@@ -59,7 +59,6 @@ const Login = () => {
     } catch (error) {
         setError('Erro ao tentar fazer login.');
         console.error('Erro ao fazer login:', error);
-        alert("Usuario não encontrado");
     }
 };
 
@@ -90,6 +89,7 @@ const Login = () => {
           />
         </div>
         <button className='buttonAuth' type="submit">Entrar</button>
+        {error && <div className="error">{error}</div>}  {/* Exibe o erro, se houver */}
       </form>
       <p>Não tem uma conta? <Link to="/cadastrar">Cadastre-se</Link></p>
       <p><Link to="/recuperar-senha">Esqueci minha senha</Link></p>
