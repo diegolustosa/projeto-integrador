@@ -13,6 +13,13 @@
   height: 100vh;
 }
 
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+
 .expedicao1 {
   padding: 2vh;
   display: flex;

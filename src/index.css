@@ -11,6 +11,13 @@ body {
   text-align: center;
 }
 
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+
 /* Estilo para a box de autenticação */
 .auth-container {
   width: 100%;
